@@ -346,7 +346,7 @@ func (p *poolCommon) Free() int {
 	if c < 0 {
 		return -1
 	}
-	return c + p.Running()
+	return c - p.Running()
 }
 
 // Waiting returns the number of tasks waiting to be executed.
