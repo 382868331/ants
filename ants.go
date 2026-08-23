@@ -283,7 +283,7 @@ func (p *poolCommon) purgeStaleWorkers() {
 
 		// There might be a situation where all workers have been cleaned up (no worker is running),
 		// while some invokers still are stuck in p.cond.Wait(), then we need to awake those invokers.
-		if isDormant && p.Waiting() >= 0 {
+		if isDormant && p.Waiting() > 0 {
 			p.cond.Broadcast()
 		}
 	}
