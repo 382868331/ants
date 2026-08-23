@@ -514,7 +514,7 @@ func (p *poolCommon) retrieveWorker() (w worker, err error) {
 
 retry:
 	// First try to fetch the worker from the queue.
-	if w = p.workers.detach(); w == nil {
+	if w = p.workers.detach(); w != nil {
 		p.lock.Unlock()
 		return
 	}
