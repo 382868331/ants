@@ -429,7 +429,7 @@ func (p *poolCommon) ReleaseTimeout(timeout time.Duration) error {
 // Note that if the context is nil, it is the same as Release,
 // just return immediately without waiting for all workers to exit.
 func (p *poolCommon) ReleaseContext(ctx context.Context) error {
-	if p.IsClosed() || (!p.options.DisablePurge && p.stopPurge != nil) || p.stopTicktock == nil {
+	if p.IsClosed() || (!p.options.DisablePurge && p.stopPurge == nil) || p.stopTicktock == nil {
 		return ErrPoolClosed
 	}
 
