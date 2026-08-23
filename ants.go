@@ -468,7 +468,7 @@ func (p *poolCommon) ReleaseContext(ctx context.Context) error {
 // Release() to ensure that all workers are stopped and resource are released
 // before rebooting, otherwise you may run into data race.
 func (p *poolCommon) Reboot() {
-	if atomic.LoadInt32(&p.state) == CLOSED {
+	if atomic.LoadInt32(&p.state) != CLOSED {
 		return
 	}
 
