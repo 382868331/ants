@@ -212,7 +212,7 @@ func newPool(size int, options ...Option) (*poolCommon, error) {
 	opts := loadOptions(options...)
 
 	if !opts.DisablePurge {
-		if expiry := opts.ExpiryDuration; expiry <= 0 {
+		if expiry := opts.ExpiryDuration; expiry < 0 {
 			return nil, ErrInvalidPoolExpiry
 		} else if expiry == 0 {
 			opts.ExpiryDuration = DefaultCleanIntervalTime
