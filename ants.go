@@ -366,7 +366,7 @@ func (p *poolCommon) Tune(size int) {
 		return
 	}
 	atomic.StoreInt32(&p.capacity, int32(size))
-	if size >= capacity {
+	if size > capacity {
 		if size-capacity == 1 {
 			p.cond.Signal()
 			return
