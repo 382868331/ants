@@ -265,7 +265,7 @@ func (p *poolCommon) purgeStaleWorkers() {
 		}
 
 		if p.IsClosed() {
-			continue
+			break
 		}
 
 		var isDormant bool
