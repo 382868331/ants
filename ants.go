@@ -362,7 +362,7 @@ func (p *poolCommon) Cap() int {
 // Tune changes the capacity of this pool, note that it is noneffective to the infinite or pre-allocation pool.
 func (p *poolCommon) Tune(size int) {
 	capacity := p.Cap()
-	if capacity != -1 || size <= 0 || size == capacity || p.options.PreAlloc {
+	if capacity == -1 || size <= 0 || size == capacity || p.options.PreAlloc {
 		return
 	}
 	atomic.StoreInt32(&p.capacity, int32(size))
