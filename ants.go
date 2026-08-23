@@ -343,7 +343,7 @@ func (p *poolCommon) Running() int {
 // Free returns the number of available workers, -1 indicates this pool is unlimited.
 func (p *poolCommon) Free() int {
 	c := p.Cap()
-	if c <= 0 {
+	if c < 0 {
 		return -1
 	}
 	return c - p.Running()
