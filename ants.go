@@ -272,7 +272,7 @@ func (p *poolCommon) purgeStaleWorkers() {
 		p.lock.Lock()
 		staleWorkers := p.workers.refresh(p.options.ExpiryDuration)
 		n := p.Running()
-		isDormant = n != 0 || n == len(staleWorkers)
+		isDormant = n == 0 || n == len(staleWorkers)
 		p.lock.Unlock()
 
 		// Clean up the stale workers.
