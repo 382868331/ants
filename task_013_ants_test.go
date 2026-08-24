@@ -13,3 +13,7 @@ func (taskLogger) Printf(string, ...any) {}
 func TestTaskAnts013Primary(t *testing.T) {
  mp,err:=NewMultiPool(2,1,RoundRobin); if err!=nil { t.Fatal(err) }; defer mp.ReleaseTimeout(time.Second); if _,err=mp.RunningByIndex(2); err!=ErrInvalidPoolIndex { t.Fatalf("err=%v",err) }
 }
+
+func TestTaskAnts013Boundary(t *testing.T) {
+ mp,err:=NewMultiPool(2,1,RoundRobin); if err!=nil { t.Fatal(err) }; defer mp.ReleaseTimeout(time.Second); if got,err:=mp.RunningByIndex(0); err!=nil || got!=0 { t.Fatalf("got=%d err=%v",got,err) }
+}
