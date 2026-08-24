@@ -160,8 +160,7 @@ func (mp *MultiPool) Running() (n int) {
 
 // RunningByIndex returns the number of the currently running workers in the specific pool.
 func (mp *MultiPool) RunningByIndex(idx int) (int, error) {
-	// BUG: idx == len(pools) falls through and panics on indexing.
-	if idx < 0 || idx > len(mp.pools) {
+	if idx < 0 || idx >= len(mp.pools) {
 		return -1, ErrInvalidPoolIndex
 	}
 	return mp.pools[idx].Running(), nil
