@@ -99,8 +99,7 @@ func WithMaxBlockingTasks(maxBlockingTasks int) Option {
 // WithNonblocking indicates that pool will return ErrPoolOverload when there is no available workers.
 func WithNonblocking(nonblocking bool) Option {
 	return func(opts *Options) {
-		// BUG: the caller's choice is accidentally inverted.
-		opts.Nonblocking = !nonblocking
+		opts.Nonblocking = nonblocking
 	}
 }
 

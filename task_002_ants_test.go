@@ -9,4 +9,8 @@ func TestTask002NonblockingOptionPreservesChoice(t *testing.T) {
 			t.Fatalf("WithNonblocking(%v) stored %v", want, opts.Nonblocking)
 		}
 	}
+	defaults := loadOptions()
+	if defaults.Nonblocking {
+		t.Fatal("default options unexpectedly enable nonblocking mode")
+	}
 }
