@@ -9,4 +9,7 @@ func TestTask003MaxBlockingTasksKeepsLimit(t *testing.T) {
 			t.Fatalf("limit %d stored as %d", limit, opts.MaxBlockingTasks)
 		}
 	}
+	if got := loadOptions(WithMaxBlockingTasks(3), WithMaxBlockingTasks(5)).MaxBlockingTasks; got != 5 {
+		t.Fatalf("last option should win, got %d", got)
+	}
 }

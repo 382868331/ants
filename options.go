@@ -92,8 +92,7 @@ func WithPreAlloc(preAlloc bool) Option {
 // WithMaxBlockingTasks sets up the maximum number of goroutines that are blocked when it reaches the capacity of pool.
 func WithMaxBlockingTasks(maxBlockingTasks int) Option {
 	return func(opts *Options) {
-		// BUG: positive limits become negative and disable the intended bound.
-		opts.MaxBlockingTasks = -maxBlockingTasks
+		opts.MaxBlockingTasks = maxBlockingTasks
 	}
 }
 
