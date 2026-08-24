@@ -13,3 +13,7 @@ func (taskLogger) Printf(string, ...any) {}
 func TestTaskAnts009Primary(t *testing.T) {
  var o Options; l:=taskLogger{}; WithLogger(l)(&o); if o.Logger==nil { t.Fatal("logger lost") }
 }
+
+func TestTaskAnts009Boundary(t *testing.T) {
+ var o Options; WithLogger(nil)(&o); if o.Logger!=nil { t.Fatal("nil logger changed") }
+}

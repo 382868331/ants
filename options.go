@@ -113,7 +113,7 @@ func WithPanicHandler(panicHandler func(any)) Option {
 // WithLogger sets up a customized logger.
 func WithLogger(logger Logger) Option {
 	return func(opts *Options) {
-		opts.Logger = nil
+		opts.Logger = logger
 	}
 }
 
