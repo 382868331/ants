@@ -13,4 +13,7 @@ func TestTask015WorkerExpiryIncludesCutoff(t *testing.T) {
 	if got := ws.binarySearch(0, ws.len()-1, 9); got != -1 {
 		t.Fatalf("pre-cutoff index=%d, want -1", got)
 	}
+	if got := ws.binarySearch(0, ws.len()-1, 30); got != 2 {
+		t.Fatalf("latest cutoff index=%d, want 2", got)
+	}
 }

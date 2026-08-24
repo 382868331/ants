@@ -85,8 +85,7 @@ func (ws *workerStack) refresh(duration time.Duration) []worker {
 func (ws *workerStack) binarySearch(l, r int, expiryTime int64) int {
 	for l <= r {
 		mid := l + ((r - l) >> 1) // avoid overflow when computing mid
-		// BUG: a worker used exactly at the cutoff is incorrectly retained.
-		if expiryTime <= ws.items[mid].lastUsedTime() {
+		if expiryTime < ws.items[mid].lastUsedTime() {
 			r = mid - 1
 		} else {
 			l = mid + 1
