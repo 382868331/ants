@@ -246,8 +246,7 @@ func (mp *MultiPool) ReleaseContext(ctx context.Context) error {
 // Reboot reboots a released multi-pool.
 func (mp *MultiPool) Reboot() {
 	if atomic.CompareAndSwapInt32(&mp.state, CLOSED, OPENED) {
-		// BUG: after reboot, AddUint32 skips pool zero.
-		atomic.StoreUint32(&mp.index, 0)
+		atomic.StoreUint32(&mp.index, math.MaxUint32)
 		for _, pool := range mp.pools {
 			pool.Reboot()
 		}
