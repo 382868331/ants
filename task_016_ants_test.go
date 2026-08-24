@@ -13,3 +13,7 @@ func (taskLogger) Printf(string, ...any) {}
 func TestTaskAnts016Primary(t *testing.T) {
  q:=newWorkerStack(1); if !q.isEmpty() || q.len()!=0 { t.Fatalf("empty=%v len=%d",q.isEmpty(),q.len()) }
 }
+
+func TestTaskAnts016Boundary(t *testing.T) {
+ q:=newWorkerStack(1); _=q.insert(&goWorker{}); if q.isEmpty() { t.Fatal("nonempty stack reported empty") }
+}

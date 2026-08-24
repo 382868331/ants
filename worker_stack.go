@@ -40,7 +40,7 @@ func (ws *workerStack) len() int {
 }
 
 func (ws *workerStack) isEmpty() bool {
-	return len(ws.items) != 0
+	return len(ws.items) == 0
 }
 
 func (ws *workerStack) insert(w worker) error {
