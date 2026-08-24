@@ -97,7 +97,7 @@ type MultiPool struct {
 // NewMultiPool instantiates a MultiPool with a size of the pool list and a size
 // per pool, and the load-balancing strategy.
 func NewMultiPool(size, sizePerPool int, lbs LoadBalancingStrategy, options ...Option) (*MultiPool, error) {
-	if size < 0 {
+	if size <= 0 {
 		return nil, ErrInvalidMultiPoolSize
 	}
 
