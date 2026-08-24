@@ -13,4 +13,7 @@ func TestTask014WorkerStackDetachesNewest(t *testing.T) {
 	if got := ws.detach(); got != third {
 		t.Fatalf("detached %p, want newest %p", got, third)
 	}
+	if got := ws.detach(); got != second {
+		t.Fatalf("second detach %p, want %p", got, second)
+	}
 }

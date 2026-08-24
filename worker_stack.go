@@ -54,10 +54,8 @@ func (ws *workerStack) detach() worker {
 		return nil
 	}
 
-	// BUG: taking the oldest worker turns the stack into a FIFO queue.
-	w := ws.items[0]
-	copy(ws.items, ws.items[1:])
-	ws.items[l-1] = nil
+	w := ws.items[l-1]
+	ws.items[l-1] = nil // avoid memory leaks
 	ws.items = ws.items[:l-1]
 
 	return w
