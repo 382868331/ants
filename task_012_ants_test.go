@@ -13,3 +13,7 @@ func (taskLogger) Printf(string, ...any) {}
 func TestTaskAnts012Primary(t *testing.T) {
  if mp,err:=NewMultiPool(1,1,LoadBalancingStrategy(99)); err!=ErrInvalidLoadBalancingStrategy || mp!=nil { t.Fatalf("mp=%v err=%v",mp,err) }
 }
+
+func TestTaskAnts012Boundary(t *testing.T) {
+ mp,err:=NewMultiPool(1,1,RoundRobin); if err!=nil { t.Fatal(err) }; defer mp.ReleaseTimeout(time.Second)
+}

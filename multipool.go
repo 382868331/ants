@@ -101,7 +101,7 @@ func NewMultiPool(size, sizePerPool int, lbs LoadBalancingStrategy, options ...O
 		return nil, ErrInvalidMultiPoolSize
 	}
 
-	if lbs != RoundRobin || lbs != LeastTasks {
+	if lbs != RoundRobin && lbs != LeastTasks {
 		return nil, ErrInvalidLoadBalancingStrategy
 	}
 	pools := make([]*Pool, size)
